@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Hadi Joe Bassil - Computer Science student at USJ, software development and machine learning.">
+<title>Hadi Joe Bassil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow column; hero name + a box-score stat strip, then sections set as label | content rows */
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --fg: #141b2b;
+  --muted: #5b6577;
+  --line: #dde2ea;
+  --accent: #d9581a;
+  --accent-soft: #fbe6da;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141d; --surface: #171e2a; --fg: #e8ecf3; --muted: #9aa4b5;
+    --line: #2a3344; --accent: #f07a3c; --accent-soft: #3a2418; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f141d; --surface: #171e2a; --fg: #e8ecf3; --muted: #9aa4b5;
+  --line: #2a3344; --accent: #f07a3c; --accent-soft: #3a2418; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0;
+  background: var(--bg); color: var(--fg);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-inline: 20px; padding-block: 0;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding-block: 56px 72px; display: flex; flex-direction: column; gap: 56px; }
+
+/* Hero */
+.hero { display: flex; flex-direction: column; gap: 20px; }
+.eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 {
+  font-family: var(--display); font-weight: 800; font-size: clamp(44px, 9vw, 84px);
+  line-height: .95; letter-spacing: -.02em; margin: 0; text-wrap: balance;
+}
+.lead { font-size: 19px; color: var(--muted); max-width: 60ch; margin: 0; }
+.contact { display: flex; flex-wrap: wrap; gap: 10px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 14px; color: var(--fg);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+  padding: 8px 14px; text-decoration: none; cursor: pointer;
+  transition: border-color .15s, color .15s;
+}
+.pill:hover { border-color: var(--accent); color: var(--accent); }
+.pill:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pill .hint { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.pill.copied .hint { color: var(--accent); }
+
+/* Box score */
+.boxscore {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 2px solid var(--fg); border-bottom: 1px solid var(--line);
+}
+.stat { padding: 14px 12px 12px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.stat + .stat { border-left: 1px solid var(--line); }
+.stat b { font-family: var(--display); font-size: 30px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.stat span { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 560px) {
+  .boxscore { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(3) { border-left: 0; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+
+/* Sections */
+section { display: grid; grid-template-columns: 170px 1fr; gap: 24px; }
+section > h2 {
+  font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted); margin: 6px 0 0;
+}
+.body { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.body p { margin: 0; max-width: 65ch; }
+@media (max-width: 680px) { section { grid-template-columns: 1fr; gap: 12px; } }
+
+.project {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  padding: 22px 24px; display: flex; flex-direction: column; gap: 12px;
+}
+.project header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 16px; }
+.project h3 { font-family: var(--display); font-size: 22px; font-weight: 700; margin: 0; letter-spacing: -.01em; }
+.solo { font-family: var(--mono); font-size: 12px; color: var(--accent); background: var(--accent-soft); padding: 3px 10px; border-radius: 999px; }
+.project ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-family: var(--mono); font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px; }
+
+.rows { display: flex; flex-direction: column; }
+.row { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding-block: 12px; border-bottom: 1px solid var(--line); }
+.row:first-child { padding-top: 0; }
+.row:last-child { border-bottom: 0; }
+.row dt { font-weight: 600; }
+.row dd { margin: 0; color: var(--muted); min-width: 0; }
+@media (max-width: 480px) { .row { grid-template-columns: 1fr; gap: 2px; } }
+
+.edu h3 { font-family: var(--display); font-size: 21px; margin: 0; font-weight: 700; }
+.edu .meta { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+
+footer { font-family: var(--mono); font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 20px; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Software Development &amp; Machine Learning · Open to internships</div>
+    <h1>Hadi Joe<br>Bassil</h1>
+    <p class="lead">Third-year Computer Science student at Université Saint-Joseph. I build end-to-end projects, from machine learning models on market data to full-stack web apps and Android apps.</p>
+    <div class="contact">
+      <button class="pill" type="button" id="copy-email" data-copy="hadijoebassil@gmail.com">hadijoebassil@gmail.com <span class="hint">Copy</span></button>
+      <button class="pill" type="button" id="copy-phone" data-copy="+961 3 898 665">+961 3 898 665 <span class="hint">Copy</span></button>
+      <a class="pill" href="https://github.com/hadijoe" target="_blank" rel="noopener">github.com/hadijoe <span class="hint">Open</span></a>
+    </div>
+  </header>
+
+  <div class="boxscore" aria-label="At a glance">
+    <div class="stat"><b>4</b><span>Projects</span></div>
+    <div class="stat"><b>6</b><span>Prog. languages</span></div>
+    <div class="stat"><b>3</b><span>Spoken languages</span></div>
+    <div class="stat"><b>2027</b><span>Graduating</span></div>
+  </div>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="body">
+      <article class="project">
+        <header><h3>Car Repair Shop Management System</h3><span class="solo">In progress</span></header>
+        <ul>
+          <li>Building, with a teammate, a web application that digitizes the full workflow of a vehicle repair shop. Supervised by Mr. Oliver Tannous, due December 2026.</li>
+          <li>Scope: customer and vehicle registration, service notes, diagnostics and repair tracking, parts and labor costing, discounts and promotions, PDF invoices, and payment recording.</li>
+          <li>ASP.NET Core MVC front end that talks to its own separately built API, with Entity Framework Core over a SQL Server 2022 database.</li>
+        </ul>
+        <div class="tags"><span class="tag">.NET 10</span><span class="tag">ASP.NET Core MVC</span><span class="tag">Web API</span><span class="tag">EF Core</span><span class="tag">SQL Server 2022</span></div>
+      </article>
+      <article class="project">
+        <header><h3>Stock Price Prediction App</h3><span class="solo">Solo project</span></header>
+        <ul>
+          <li>C# application that pulls real-time market data from the Yahoo Finance API and forecasts stock price trends with a machine learning model.</li>
+          <li>Designed the full pipeline alone: data retrieval, preprocessing, model training and prediction output.</li>
+        </ul>
+        <div class="tags"><span class="tag">C#</span><span class="tag">Machine Learning</span><span class="tag">Yahoo Finance API</span></div>
+      </article>
+      <article class="project">
+        <header><h3>Gold Price Prediction Model</h3></header>
+        <ul>
+          <li>Python machine learning model that forecasts the price of gold and shows whether it is expected to rise or fall.</li>
+          <li>Trained and evaluated the model on historical gold price data.</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Regression</span></div>
+      </article>
+      <article class="project">
+        <header><h3>Delivery Management Website</h3><span class="solo">Solo project</span></header>
+        <ul>
+          <li>Full-stack delivery platform with user signup and login, order placement and order status tracking.</li>
+          <li>Admin panel to manage orders and deliveries, backed by a SQL Server database.</li>
+        </ul>
+        <div class="tags"><span class="tag">ASP.NET MVC</span><span class="tag">C#</span><span class="tag">SQL Server</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="body">
+      <dl class="rows">
+        <div class="row"><dt>Languages</dt><dd>C#, Python, Kotlin, Java, C++, HTML/CSS</dd></div>
+        <div class="row"><dt>Frameworks</dt><dd>.NET, ASP.NET Core MVC, ASP.NET MVC, Entity Framework Core, Android</dd></div>
+        <div class="row"><dt>Databases</dt><dd>SQL Server</dd></div>
+        <div class="row"><dt>Tools</dt><dd>Git, GitHub, Claude Code (AI-assisted development)</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="body edu">
+      <div>
+        <h3>Université Saint-Joseph (USJ)</h3>
+        <div class="meta">Licence in Computer Science · 2024 – June 2027 (expected)</div>
+      </div>
+      <p>Relevant coursework: Object-Oriented Programming, Databases, Web Development, Machine Learning.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Certifications</h2>
+    <div class="body edu">
+      <div>
+        <h3>CCNA 1: Introduction to Networks</h3>
+        <div class="meta">Cisco Networking Academy · Course completed</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Languages</h2>
+    <div class="body">
+      <dl class="rows">
+        <div class="row"><dt>Arabic</dt><dd>Native</dd></div>
+        <div class="row"><dt>French</dt><dd>Fluent</dd></div>
+        <div class="row"><dt>English</dt><dd>Fluent</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2>Off the keyboard</h2>
+    <div class="body">
+      <p><strong>Semi-professional basketball player</strong> with Chabeb USJ and Damour. Lifelong player who trains and competes every week with two teams while studying full time.</p>
+    </div>
+  </section>
+
+  <footer>Hadi Joe Bassil · Lebanon</footer>
+</main>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var text = btn.getAttribute('data-copy');
+    var hint = btn.querySelector('.hint');
+    function done() { btn.classList.add('copied'); hint.textContent = 'Copied'; setTimeout(function () { btn.classList.remove('copied'); hint.textContent = 'Copy'; }, 1600); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(btn.firstChild.nodeType === 3 ? btn : btn);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      hint.textContent = 'Selected';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+});
+</script>
+</body>
+</html>
